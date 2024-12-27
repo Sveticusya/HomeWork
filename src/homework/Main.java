@@ -1,7 +1,6 @@
-import java.io.IOException;
+package homework;
+
 import java.time.Year;
-import java.util.Random;
-import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -16,7 +15,7 @@ public class Main {
             users[i].email = "email" + i;
         }
 
-        for(int i=0; i < 10; i++) {
+        for(int i=0; i < users.length; i++) {
             if(Year.now().getValue() - users[i].yearOfBirth > 40)
                 users[i].printUserInfo();
         }
