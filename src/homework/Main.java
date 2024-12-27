@@ -1,4 +1,4 @@
-import java.lang.reflect.Array;
+package homework;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -16,7 +16,7 @@ public class Main {
         int sum = 0;
         for (int i = 0; i < array.length; i++) {
             if (array[i] > 5)
-                sum = sum + array[i];
+                sum += array[i];
         }
 
         System.out.println(sum);
@@ -30,7 +30,7 @@ public class Main {
 
     public static void increaseArray(int[] array, int value) {
         for (int i = 0; i < array.length; i++) {
-            array[i] = array[i] + value;
+            array[i] += value;
         }
     }
 
@@ -38,11 +38,11 @@ public class Main {
         int firstHalf = 0;
         int secondHalf = 0;
         for (int i = 0; i < array.length / 2; i++) {
-            firstHalf = firstHalf + array[i];
+            firstHalf += array[i];
         }
 
         for (int i = array.length / 2; i < array.length; i++) {
-            secondHalf = secondHalf + array[i];
+            secondHalf += array[i];
         }
 
         if (firstHalf > secondHalf)
