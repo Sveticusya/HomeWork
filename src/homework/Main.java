@@ -1,3 +1,5 @@
+package homework;
+
 import java.util.Random;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -11,10 +13,8 @@ public class Main {
             cats[i] = new Cat(r.nextInt(10), "Name" + i);
 
         for(int i = 0; i < 10; i++) {
-            if(plate.Eat(cats[i].GetAppetite()))
-                cats[i].SetFull();
-
-            cats[i].PrintInfo();
+            cats[i].eat(plate);
+            cats[i].printInfo();
         }
     }
 }
