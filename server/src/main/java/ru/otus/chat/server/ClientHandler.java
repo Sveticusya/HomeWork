@@ -36,6 +36,14 @@ public class ClientHandler {
                             sendMsg("/exitok");
                             break;
                         }
+                        if(message.startsWith("/w")) {
+                            int indexOfFirstSpace = message.indexOf(" ");
+                            String nameAndMessage = message.substring(indexOfFirstSpace + 1);
+                            int indexOfSecondSpace = nameAndMessage.indexOf(" ");
+                            String user = nameAndMessage.substring(0, indexOfSecondSpace);
+                            String messageForUser = nameAndMessage.substring(indexOfSecondSpace + 1);
+                            server.broadcastPrivateMessage(user, "private message from " + username + " : " + messageForUser);
+                        }
                     } else {
                         server.broadcastMessage(username + " : " + message);
                     }
