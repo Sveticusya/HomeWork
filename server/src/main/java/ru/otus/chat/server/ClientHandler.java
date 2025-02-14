@@ -14,6 +14,7 @@ public class ClientHandler {
 
     private String username;
     private static int userCount = 0;
+    private Roles role;
 
 
     public ClientHandler(Socket socket, Server server) throws IOException {
@@ -24,6 +25,9 @@ public class ClientHandler {
 
         userCount++;
         username = "user" + userCount;
+        role = Roles.USER;
+        if(userCount == 1)
+            role = Roles.ADMIN;
 
         new Thread(() -> {
             try {
@@ -43,6 +47,11 @@ public class ClientHandler {
                             String user = nameAndMessage.substring(0, indexOfSecondSpace);
                             String messageForUser = nameAndMessage.substring(indexOfSecondSpace + 1);
                             server.broadcastPrivateMessage(user, "private message from " + username + " : " + messageForUser);
+                        }
+                        if(message.startsWith("/kick") && role == Roles.ADMIN) {
+                            int indexOfSpace = message.indexOf(" ");
+                            String userForKick = message.substring(indexOfSpace + 1);
+                            server.kickUser(userForKick);
                         }
                     } else {
                         server.broadcastMessage(username + " : " + message);

@@ -49,4 +49,11 @@ public class Server {
                 c.sendMsg(message);
         }
     }
+
+    public void kickUser(String userName) {
+        for (ClientHandler c : clients) {
+            if(c.getUsername().equals(userName))
+                c.sendMsg("/exitok");
+        }
+    }
 }
