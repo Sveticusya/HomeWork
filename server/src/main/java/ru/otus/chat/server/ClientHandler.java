@@ -37,12 +37,11 @@ public class ClientHandler {
                             break;
                         }
                         if(message.startsWith("/w")) {
-                            int indexOfFirstSpace = message.indexOf(" ");
-                            String nameAndMessage = message.substring(indexOfFirstSpace + 1);
-                            int indexOfSecondSpace = nameAndMessage.indexOf(" ");
-                            String user = nameAndMessage.substring(0, indexOfSecondSpace);
-                            String messageForUser = nameAndMessage.substring(indexOfSecondSpace + 1);
-                            server.broadcastPrivateMessage(user, "private message from " + username + " : " + messageForUser);
+                            String[] element = message.split(" ", 3);
+                            String user = element[1];
+                            String messageForUser = element[2];
+                            server.sendPrivateMessage(user, "private message from " + username + " : " + messageForUser);
+                            server.sendPrivateMessage(username,  "@" + user + " : " + messageForUser);
                         }
                     } else {
                         server.broadcastMessage(username + " : " + message);
