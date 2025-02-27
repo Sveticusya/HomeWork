@@ -42,4 +42,13 @@ public class Server {
             c.sendMsg(message);
         }
     }
+
+    public void sendPrivateMessage(String userName, String message){
+        for (ClientHandler c : clients) {
+            if(c.getUsername().equals(userName)) {
+                c.sendMsg(message);
+                break;
+            }
+        }
+    }
 }
