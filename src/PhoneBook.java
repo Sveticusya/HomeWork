@@ -4,23 +4,23 @@ import java.util.Map;
 
 public class PhoneBook {
 
-    private HashMap<String, String> _phones;
+    private HashMap<String, String> phones;
 
     public PhoneBook() {
-        _phones = new HashMap<>();
+        phones = new HashMap<>();
     }
 
     public void add(String name, String phoneNumber) {
-        if(_phones.containsKey(phoneNumber))
+        if(phones.containsKey(phoneNumber))
             return;
 
-        _phones.put(phoneNumber, name);
+        phones.put(phoneNumber, name);
     }
 
     public ArrayList<String> find(String name) {
         ArrayList<String> result = new ArrayList<String>();
-        for(Map.Entry<String, String> entry : _phones.entrySet()) {
-            if(entry.getValue() == name) {
+        for(Map.Entry<String, String> entry : phones.entrySet()) {
+            if(entry.getValue().equals(name)) {
                 result.add(entry.getKey());
             }
         }
@@ -29,6 +29,6 @@ public class PhoneBook {
     }
 
     public boolean containsPhoneNumber(String phoneNumber) {
-        return _phones.containsKey(phoneNumber);
+        return phones.containsKey(phoneNumber);
     }
 }
