@@ -40,7 +40,7 @@ public class Main {
     public static ArrayList<String> getEmployeesNames(ArrayList<Employee> employees) {
         ArrayList<String> result = new ArrayList<>();
         for(Employee employee : employees) {
-            result.add(employee.name);
+            result.add(employee.getName());
         }
 
         return result;
@@ -49,7 +49,7 @@ public class Main {
     public static ArrayList<Employee> getEmployeesByAge(int age, ArrayList<Employee> employees) {
         ArrayList<Employee> result = new ArrayList<>();
         for(Employee employee : employees) {
-            if(employee.age >= age)
+            if(employee.getAge() >= age)
                 result.add(employee);
         }
 
@@ -57,9 +57,12 @@ public class Main {
     }
 
     public static boolean checkEmployeesByAverageAge(int averageAge, ArrayList<Employee> employees) {
+        if(employees.isEmpty())
+            return false;
+
         int totalAge = 0;
         for(Employee employee : employees) {
-            totalAge += employee.age;
+            totalAge += employee.getAge();
         }
 
         return averageAge < totalAge / employees.size();
@@ -72,7 +75,7 @@ public class Main {
         Employee youngestEmployee = employees.get(0);
 
         for(Employee employee : employees) {
-            if(employee.age < youngestEmployee.age)
+            if(employee.getAge() < youngestEmployee.getAge())
                 youngestEmployee = employee;
         }
 
